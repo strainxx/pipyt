@@ -36,7 +36,7 @@ public class PiPBrowser extends Screen {
     protected void init() {
         super.init();
         if (browser == null) {
-            String url = "https://www.google.com";
+            String url = "about:blank";
             boolean transparent = true;
             browser = MCEF.createBrowser(url, transparent);
             resizeBrowser(windowSize.x, windowSize.y);
