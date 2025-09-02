@@ -1,0 +1,41 @@
+{
+	"schemaVersion": 1,
+	"id": "pip-youtube",
+	"version": "${version}",
+	"name": "PiP Youtube",
+	"description": "This is an example description! Tell everyone what your mod is about!",
+	"authors": [
+		"Me!"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/pip-youtube/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"strnq.pipyt.PiPYoutube"
+		],
+		"client": [
+			"strnq.pipyt.PiPYoutubeClient"
+		]
+	},
+	"mixins": [
+		"pip-youtube.mixins.json",
+		{
+			"config": "pip-youtube.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.17.2",
+		"minecraft": "~1.21.1",
+		"java": ">=21",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}

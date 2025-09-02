@@ -1,0 +1,11 @@
+{
+	"required": true,
+	"package": "strnq.pipyt.mixin.client",
+	"compatibilityLevel": "JAVA_21",
+	"client": [
+		"ScreenClientMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}
