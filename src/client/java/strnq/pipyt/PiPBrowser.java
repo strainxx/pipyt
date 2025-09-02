@@ -14,7 +14,6 @@ import net.minecraft.text.Text;
 import net.minecraft.util.math.Vec2f;
 
 public class PiPBrowser extends Screen {
-    private static final int BROWSER_DRAW_OFFSET = 20;
 
     public static MCEFBrowser browser;
 
@@ -163,21 +162,41 @@ public class PiPBrowser extends Screen {
                 btnflag2 = true;
             }
             float newWinWidth = 0;
+            float newWinHeight = 0;
             float newWinStartX = 0;
-            if (mouseX < resizeStartPos.x) {
+            float newWinStartY = 0;
+//            if (mouseX < resizeStartPos.x) {
+//                newWinWidth = (float) (resizeStartPos.x-mouseX);
+//                newWinStartX = (float) mouseX;
+//            } else {
+//                newWinWidth = (float) (mouseX - resizeStartPos.x);
+//                newWinStartX = (float) resizeStartPos.x;
+//            }
+//            if (mouseY < resizeStartPos.y) {
+//                windowPos = new Vec2f(newWinStartX, (float)mouseY);
+//                windowSize = new Vec2f(newWinWidth, (float) (resizeStartPos.y-mouseY));
+//            } else {
+//                windowPos = new Vec2f(newWinStartX, resizeStartPos.y);
+//                windowSize = new Vec2f(newWinWidth, (float) (mouseY-resizeStartPos.y));
+//            }
+            if (mouseX < resizeStartPos.x){
                 newWinWidth = (float) (resizeStartPos.x-mouseX);
                 newWinStartX = (float) mouseX;
             } else {
-                newWinWidth = (float) (mouseX - resizeStartPos.x);
-                newWinStartX = (float) resizeStartPos.x;
+                newWinWidth = (float) (mouseX-resizeStartPos.x);
+                newWinStartX = resizeStartPos.x;
             }
+
             if (mouseY < resizeStartPos.y) {
-                windowPos = new Vec2f(newWinStartX, (float)mouseY);
-                windowSize = new Vec2f(newWinWidth, (float) (resizeStartPos.y-mouseY));
+                newWinHeight = (float) (resizeStartPos.y - mouseY);
+                newWinStartY = (float) mouseY;
             } else {
-                windowPos = new Vec2f(newWinStartX, resizeStartPos.y);
-                windowSize = new Vec2f(newWinWidth, (float) (mouseY-resizeStartPos.y));
+                newWinHeight = (float) (mouseY - resizeStartPos.y);
+                newWinStartY = resizeStartPos.y;
             }
+
+            windowPos = new Vec2f(newWinStartX, newWinStartY);
+            windowSize = new Vec2f(newWinWidth, newWinHeight);
             resizeStartPos = new Vec2f(0,0);
             resizeBrowser(windowSize.x, windowSize.y);
             resizing = false;
